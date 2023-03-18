@@ -16,8 +16,8 @@ pipeline {
         
         stage('Push to DockerHub') {
             steps {
-                withDockerRegistry([credentialsId: registryCredential]) {
-                    sh "docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD}"
+                withCredentials([usernamePassword(credentialsId: registryCredential, passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh "echo $password | docker login -u $username --password-stdin"
                     sh "docker push ${imageName}"
                 }
             }
