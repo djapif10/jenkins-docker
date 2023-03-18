@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         registry = 'docker.io'
-        registryCredential = 'dockerheb-creds'
+        registryCredential = 'dockerhub-creds'
         imageName = 'fdjapi10/myubuntu'
         containerName = 'my-container'
     }
